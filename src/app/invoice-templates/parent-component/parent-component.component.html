@@ -1,0 +1,312 @@
+<div class="min-h-screen" *ngIf="currentStep === 1">
+  <div class="max-w-lg mx-auto bg-white p-8 mt-8 rounded-lg shadow-lg">
+    <h2 class="text-2xl font-bold mb-6"> Select From Company</h2>
+    <div class="mb-6">
+      <label class="block text-sm font-bold mb-2" for="fromCompany"
+        >Select From Company:</label
+      >
+      <select
+        class="w-full border border-gray-300 rounded px-4 py-2"
+        [(ngModel)]="selectedFromCompany"
+        id="fromCompany"
+      >
+        <option *ngFor="let company of companies" [value]="company">
+          {{ company }}
+        </option>
+      </select>
+    </div>
+    <button
+      class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 active:bg-blue-900"
+      (click)="nextStep()"
+    >
+      Next
+    </button>
+  </div>
+</div>
+
+<div class="min-h-screen" *ngIf="currentStep === 2">
+  <div class="max-w-lg mx-auto bg-white p-8 mt-8 rounded-lg shadow-lg">
+    <h2 class="text-2xl font-bold mb-6"> Select To Company</h2>
+    <div class="mb-6">
+      <label class="block text-sm font-bold mb-2" for="toCompany"
+        >Select To Company:</label
+      >
+      <select
+        class="w-full border border-gray-300 rounded px-4 py-2"
+        [(ngModel)]="selectedToCompany"
+        id="toCompany"
+      >
+        <option *ngFor="let company of tocompanies" [value]="company">
+          {{ company }}
+        </option>
+      </select>
+    </div>
+    <button
+      class="bg-blue-500 text-white px-4 py-2 mr-2 rounded hover:bg-blue-700 active:bg-blue-900"
+      (click)="previousStep()"
+    >
+      Previous
+    </button>
+    <button
+      class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 active:bg-blue-900"
+      (click)="nextStep()"
+    >
+      Next
+    </button>
+  </div>
+</div>
+
+<div class="min-h-screen" *ngIf="currentStep === 3">
+  <div class=" bg-white p-8 m-8 rounded-lg border-2 border-slate-500">
+    <h2 class="text-2xl font-bold mb-6"> Enter Services Information</h2>
+
+    <div class="grid grid-cols-5 mb-2">
+      <div>
+        From: <strong>{{ selectedFromCompany }} </strong>
+      </div>
+      <div>
+        To: <strong>{{ selectedToCompany }}</strong>
+      </div>
+      <div></div>
+      <div></div>
+    </div>
+    <hr />
+    <!-- Input fields for service information -->
+    <div class="mb-6 mt-2" *ngFor="let service of services; let i = index">
+      <div class="grid grid-cols-7 gap-2">
+        <div class="col-span-1">
+          <label class="block text-sm text-center font-bold mb-2">S.No:</label>
+          <p class="py-2 text-center">{{ i + 1 }}</p>
+        </div>
+        <div class="col-span-2">
+          <label class="block text-sm font-bold mb-2" for="description{{ i }}"
+            >Description of Goods:</label
+          >
+          <input
+            class="w-full border border-gray-300 rounded px-4 py-2"
+            type="text"
+            [(ngModel)]="service.description"
+            id="description{{ i }}"
+            placeholder="Descriptions"
+            required
+            #description="ngModel"
+          />
+        </div>
+        <div class="col-span-1">
+          <label class="block text-sm font-bold mb-2" for="hsnCode{{ i }}"
+            >HSN Code:</label
+          >
+          <input
+            class="w-full border border-gray-300 rounded px-4 py-2"
+            type="text"
+            [(ngModel)]="service.hsnCode"
+            id="hsnCode{{ i }}"
+            placeholder="HSN code"
+            required
+          />
+        </div>
+        <div class="col-span-1">
+          <label
+            class="block text-sm font-bold mb-2"
+            for="currencyExchange{{ i }}"
+            >Currency(in $):</label
+          >
+          <input
+            class="w-full border border-gray-300 rounded px-4 py-2"
+            type="number"
+            [(ngModel)]="service.currencyExchange"
+            id="currencyExchange{{ i }}"
+            placeholder="Amount in $"
+            required
+          />
+        </div>
+        <div class="col-span-1">
+          <label class="block text-sm font-bold mb-2" for="rate{{ i }}"
+            >Exchange Rate(/USD):</label
+          >
+          <input
+            class="w-full border border-gray-300 rounded px-4 py-2"
+            type="number"
+            [(ngModel)]="service.rate"
+            id="rate{{ i }}"
+            required
+          />
+        </div>
+        <div class="col-span-6">
+          <!-- Add any additional fields here if needed -->
+        </div>
+        <div class="col-span-6 flex justify-end">
+          <button
+            class="bg-red-500 text-white p-2 rounded hover:bg-red-700 active:bg-red-900"
+            (click)="removeService(i)"
+          >
+            Remove Service
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-center">
+      <button
+        class="bg-violet-600 text-white px-8 py-2 rounded my-4 hover:bg-violet-700 active:bg-violet-900"
+        (click)="addService()"
+      >
+        + Add Service
+      </button>
+    </div>
+
+    <!-- Navigation buttons -->
+    <div class="flex justify-center gap-4">
+      <button
+        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 active:bg-blue-900"
+        (click)="previousStep()"
+      >
+        Previous
+      </button>
+      <button
+        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 active:bg-blue-900"
+        (click)="nextStep()"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="min-h-screen" *ngIf="currentStep === 7">
+  <div class="mx-auto bg-white p-8 mt-8 rounded-lg">
+    <h2 class="text-2xl font-bold mb-6"> Enter Services Information</h2>
+
+    <div class="grid grid-cols-5 mb-2">
+      <div>
+        From: <strong>{{ selectedFromCompany }} </strong>
+      </div>
+      <div>
+        To: <strong>{{ selectedToCompany }}</strong>
+      </div>
+      <div></div>
+      <div></div>
+    </div>
+    <hr />
+    <div class="mb-6 mt-2" *ngFor="let service of services; let i = index">
+      <div class="grid grid-cols-7 gap-2">
+        <div>
+          <label class="block text-sm text-center font-bold mb-2">S.No:</label>
+          <p class="py-2 text-center">{{ i + 1 }}</p>
+        </div>
+        <div class="col-span-2">
+          <label class="block text-sm font-bold mb-2" for="description{{ i }}">
+            Service Description:</label
+          >
+          <input
+            class="w-full border border-gray-300 rounded px-4 py-2"
+            type="text"
+            [(ngModel)]="service.description"
+            id="description{{ i }}"
+            placeholder="Description"
+          />
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-2" for="hsnCode{{ i }}"
+            >HSN Code:</label
+          >
+          <input
+            class="w-full border border-gray-300 rounded px-4 py-2"
+            type="text"
+            [(ngModel)]="service.hsnCode"
+            id="hsnCode{{ i }}"
+            placeholder="HSN code"
+          />
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-2" for="amount{{ i }}"
+            >Amount (in Rs.):</label
+          >
+          <input
+            class="w-full border border-gray-300 rounded px-4 py-2"
+            type="number"
+            [(ngModel)]="service.amount"
+            id="amount{{ i }}"
+            placeholder="Amount in Rs."
+          />
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-2" for="rate{{ i }}"
+            >Rate(/USD):</label
+          >
+          <input
+            class="w-full border border-gray-300 rounded px-4 py-2"
+            type="number"
+            [(ngModel)]="service.rate"
+            id="rate{{ i }}"
+            placeholder="Exchange rate"
+            required
+          />
+        </div>
+        <div class="col-span-6"></div>
+        <div class="col-span-6 flex justify-end">
+          <button
+            class="bg-red-500 text-white p-2 rounded hover:bg-red-700 active:bg-red-900"
+            (click)="removeService(i)"
+          >
+            Remove Service
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-center">
+      <button
+        class="bg-violet-600 text-white px-8 py-2 rounded my-4 hover:bg-violet-700 active:bg-violet-900"
+        (click)="addService()"
+      >
+        + Add Service
+      </button>
+    </div>
+
+    <!-- Navigation buttons -->
+    <div class="flex justify-center gap-4">
+      <button
+        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 active:bg-blue-900"
+        (click)="goBackToEditing()"
+      >
+        Previous
+      </button>
+      <button
+        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 active:bg-blue-900"
+        (click)="nextStep()"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="currentStep === 4">
+  <div class="font-bold text-center text-xl ">Preview</div>
+
+  <div class="flex justify-end">
+    <button
+      class="bg-gray-500 text-white px-4 py-2 m-4 rounded hover:bg-gray-700 active:bg-gray-900"
+      (click)="goBackToEditing()"
+    >
+      Back to Editing
+    </button>
+    <button
+      class="bg-indigo-500 text-white px-4 py-2 m-4 rounded hover:bg-indigo-700 active:bg-indigo-900"
+      (click)="createInvoice()"
+    >
+      Create Invoice
+    </button>
+  </div>
+
+  <app-invoice-container
+    #invoiceContent
+    [fromCompany]="selectedFromCompany"
+    [toCompany]="selectedToCompany"
+    [services]="services"
+    [invoiceNumber]="invoiceNumber"
+    [invoiceDate]="invoiceDate"
+  ></app-invoice-container>
+
+</div>

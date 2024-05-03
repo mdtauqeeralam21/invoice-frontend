@@ -1,0 +1,29 @@
+
+<div *ngIf="determineTemplate() === 'template1'">
+    <app-invoice-template1 [services]="services" [invoiceNumber]="invoiceNumber" [invoiceDate]="invoiceDate"></app-invoice-template1>
+  </div>
+  
+  <div *ngIf="determineTemplate() === 'template2'">
+    <app-invoice-template2 [services]="services" [invoiceNumber]="invoiceNumber" [invoiceDate]="invoiceDate"></app-invoice-template2>
+  </div>
+
+  <div *ngIf="determineTemplate() === 'template3'">
+    <app-invoice-template3 [services]="services" [invoiceNumber]="invoiceNumber" [invoiceDate]="invoiceDate"></app-invoice-template3>
+  </div>
+
+  <div *ngIf="determineTemplate() === 'template4'">
+    <app-invoice-template4 [services]="services" [invoiceNumber]="invoiceNumber" [invoiceDate]="invoiceDate"></app-invoice-template4>
+  </div>
+
+  <div *ngIf="determineTemplate() === 'template5'">
+    <app-invoice-template5 [services]="services" [invoiceNumber]="invoiceNumber" [invoiceDate]="invoiceDate"></app-invoice-template5>
+  </div>
+
+  <div *ngIf="determineTemplate() === 'template6'">
+    <app-invoice-template6 [services]="services" [invoiceNumber]="invoiceNumber" [invoiceDate]="invoiceDate"></app-invoice-template6>
+  </div>
+
+  <div *ngIf="determineTemplate() === 'default'">
+    <app-no-invoice></app-no-invoice>
+  </div>
+

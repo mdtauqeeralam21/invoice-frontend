@@ -1,0 +1,151 @@
+body {
+    font-family: "Verdana","sans-serif";
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+  }
+  .invoice-name{
+    margin: 0;
+    text-align: center;
+    font-size: larger;
+  }
+  
+  .invoice {
+    width: 800px;
+    margin: 10px auto;
+    border: 8px solid black;
+    background-color: #fff;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .company-info {
+    width: 100%;
+    text-align: left;
+    padding: 36px;
+  }
+
+  .company-info p{
+    margin: 4px;
+  }
+  
+  .horizontal-line{
+    border: 4px solid black;
+
+  }
+  hr{
+    border-top: 2px solid #000;
+    margin: 0;
+  }
+  
+ .amount-in-words, .tax-amount-in-words {
+    margin-bottom: 4px;
+    padding-left: 16px;
+  }
+
+  .declaration{
+    padding: 16px;
+    margin-top: 24px;
+    margin-bottom: 0;
+  }
+  .declaration p{
+    margin: 0;
+  }
+
+
+
+  .details {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 8px;
+  }
+  .details p{
+    margin: 4px;
+  }
+  
+  .column {
+    flex: 1;
+  }
+  
+  
+  .services table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .services th {
+    border: 1px solid #2b2727;
+    background-color: #f2f2f2;
+    padding: 8px;
+    text-align: center;
+  }
+
+   .services td {
+    border: 1px solid #2b2727;
+    text-align: center;
+    padding: 12px;
+  }
+  
+  
+  .tax-details table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .tax-details th, .tax-details td {
+    border: 1px solid #2b2727;
+    text-align: center;
+  }
+  
+  .tax-details th {
+    background-color: #f2f2f2;
+    text-align: center;
+  }
+
+  
+  .bank-info ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .bank-info ul li {
+    margin-bottom: 5px;
+  }
+  
+  
+  .bank-signature {
+    display: flex;
+    margin: 0;
+    
+  }
+  
+  .bank-details {
+    flex: 1;
+    border-right: 2px solid black;
+    padding-left: 12px;
+  }
+
+  .bank-details p{
+    margin: 2px;
+  }
+   .signature {
+    flex: 1;
+    padding:8px;
+    justify-content: center;
+  }
+  .signature img{
+    width: 75%;
+    margin: 16px;
+  }
+
+  .sub-header {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid black;
+  }
+  
+  

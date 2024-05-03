@@ -1,0 +1,54 @@
+.container {
+    width: 800px;
+    margin: 8px auto;
+    border: 4px solid black;
+    overflow: hidden;
+    font-size: 13px;
+}
+.header {
+    text-align: center;
+}
+.invoice-details {
+    margin-bottom: 10px;
+}
+.invoice-details p {
+    margin: 5px 0;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    border: 1px solid black;
+}
+th {
+    background-color: #f2f2f2;
+    border: 1px solid black;
+}
+.total {
+    margin-top: 20px;
+    text-align: right;
+}
+.fontWeight
+{
+    font-weight:bold;
+}
+.divider {
+    width: 100%;
+    display: flex;
+}
+.item,.item1 {
+    flex-basis: calc(50%); 
+    border: 1px solid black;
+    padding: 2px;
+}
+
+hr{
+    border:1px solid black;
+}
+.centerAlign
+{
+    text-align: center;
+}

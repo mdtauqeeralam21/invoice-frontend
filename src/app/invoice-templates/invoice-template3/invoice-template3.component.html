@@ -1,0 +1,172 @@
+
+    <div class="invoice-name"><strong>Invoice</strong></div>
+
+    <div class="invoice">
+      <div class="header">
+        <div class="logo">
+          <img src="../../../assets/image005.jpg" alt="Company Logo" />
+        </div>
+        <div class="company-info">
+          <h1 class="font-black text-xl">SIRIAN INFOTECH PRIVATE LIMITED</h1>
+          <p>
+            Flat No 402, Muppavarapu Residency, Mahanadu Road,Kamineni Nagar,
+            Vijayawada, NTR District, Andhra Pradesh-520008 , India.
+          </p>
+          <p>Corporate Identification Number : <strong> U62099AP2023PTC111985 </strong> </p>
+          <p>Email:&nbsp;&nbsp; <strong> sirianifotechpvtltd&#64;gmail.com </strong></p>
+        </div>
+      </div>
+      <div class="horizontal-line"></div>
+
+      <div class="details">
+        <div class="column">
+          <div><strong>Invoice Number: </strong>{{ invoiceNumber }}</div>
+          <div><strong>Date:</strong> {{ invoiceDate | date : "mediumDate" }}</div>
+          <div><strong>Billed To: </strong></div>
+          <div style="width: 90%">
+            <strong>SIRIAN GROUP INC</strong><br />
+            701 Highlands Path york <br />
+            PA 17402,U.S.A
+          </div>
+          <div>TAX ID : {{ taxId }}</div>
+        </div>
+        <div class="column">
+          <div><strong>Nature of Supply:</strong> {{ natureOfSupply }}</div>
+          <div><strong>Mode of Supply: </strong>{{ modeOfSupply }}</div>
+          <div><strong>Nature of Invoice: </strong>{{ natureOfInvoice }}</div>
+          <div><strong>IGST Levy:</strong> {{ igstLevy }}</div>
+          <div>
+            <strong>Undertaking Application Reference No:</strong>
+            {{ undertakingRefNo }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Services Table Section -->
+      <div class="services">
+        <table>
+          <thead>
+            <tr>
+              <th>SI No.</th>
+              <th>Description of Goods</th>
+              <th>HSN/SAC</th>
+              <th>Currency & Exchange Rate Details</th>
+              <th>Amount (in Rs.)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let service of services; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ service.description }}</td>
+              <td>{{ service.hsnCode }}</td>
+              <td>
+                ${{ service.currencyExchange }} &#64; Exchange Rate of
+                {{ service.rate }}/USD
+            </td>
+              <td>
+                {{ service.currencyExchange * service.rate | number : "1.2-2" }}
+              </td>
+            </tr>
+            <tr>
+              <td colspan="4" style="text-align: right">Total</td>
+              <td>{{ getTotalAmount() | number : "1.2-2" }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- Total Amount Section -->
+      <!-- <div class="total">
+      <p>Total:</p>
+      <p>$100.00</p>
+    </div> 
+    <hr /> -->
+
+      <!-- Amount in Words Section -->
+      <div class="amount-in-words">
+        <p>
+          Amount in Words:<strong> {{ convertToWords(getTotalAmount()) }} only</strong>
+        </p>
+      </div>
+
+      <!-- Tax Details Section -->
+      <div class="tax-details">
+        <table>
+          <thead>
+            <tr style="border-bottom: 1px solid white">
+              <th rowspan="2">HSN/SAC</th>
+              <th rowspan="2">Taxable Value</th>
+              <th colspan="2">Integrated Tax</th>
+              <th rowspan="2">Total Tax Amount</th>
+            </tr>
+            <tr>
+              <th>Rate</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let service of services; let i = index">
+              <td>{{ service.hsnCode }}</td>
+              <td>{{ taxableValue }}</td>
+              <td>{{ taxRate }}</td>
+              <td>{{ taxAmount }}</td>
+              <td>{{ totalTaxAmount }}</td>
+            </tr>
+            <tr>
+              <td colspan="4">Total</td>
+              <td>-</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tax-amount-in-words">
+        <p>
+          Tax Amount (in Words) &nbsp;:<strong> {{ taxAmountInWords }}</strong>
+        </p>
+        <p>
+          Company's PAN No &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :<strong>{{
+            companyPanNo
+          }}</strong>
+        </p>
+      </div>
+
+      <div class="declaration">
+        <p><strong>Declaration:</strong></p>
+        <p>
+          We declare that this invoice shows the actual price of the goods
+          described and that all particulars are true and correct.
+        </p>
+      </div>
+
+      <hr />
+      <div class="bank-signature">
+        <div class="bank-details">
+          <h4 style="margin: 8px">OUR BANK DETAILS:</h4>
+          <h5 style="margin: 8px">Edubot Software And Services</h5>
+          <p>
+            Account No &nbsp;:<strong>{{ accountNo }}</strong>
+          </p>
+          <p>
+            Bank Name &nbsp;:<strong>{{ bankName }}</strong>
+          </p>
+          <p>
+            Branch &nbsp;&nbsp;&nbsp;&nbsp; :<strong>{{ branch }}</strong>
+          </p>
+          <p>
+            IFSC Code &nbsp;&nbsp;:<strong>{{ ifscCode }}</strong>
+          </p>
+          <p>
+            SWIFT code :<strong>{{ swiftCode }}</strong>
+          </p>
+        </div>
+        <div class="signature">
+          <p style="margin: 16px">
+            <strong> Edubot Software and Services</strong>
+          </p>
+          <img src="../../../assets/image006.jpg" />
+          <p style="text-align: center">
+            <strong>Authorised Signatory</strong>
+          </p>
+        </div>
+      </div>
+    </div>

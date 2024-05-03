@@ -1,0 +1,60 @@
+<!-- invoice-list.component.html -->
+
+<div class="container min-h-screen mx-auto px-4 py-8">
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-2xl font-bold">All Invoices</h2>
+    <button
+      (click)="addInvoice()"
+      class="bg-violet-500 p-2 rounded text-white hover:bg-violet-700 active:bg-violet-900"
+    >
+      Create New Invoice
+    </button>
+  </div>
+  
+
+  <div
+    *ngIf="invoices && invoices.length > 0; else noInvoices"
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+  >
+    <div
+      *ngFor="let invoice of invoices"
+      class="bg-white rounded-lg shadow-md p-6"
+    >
+      <div class="mb-2">
+        <span class="text-lg font-semibold">Invoice Number: </span>
+        <span class="text-gray-600">{{ invoice.invoiceNumber }}</span>
+      </div>
+      <div class="mb-2">
+        <span class="text-lg font-semibold">Raised From: </span>
+        <span class="text-gray-600">{{ invoice.raisingFromCompany }}</span>
+      </div>
+      <div class="mb-2">
+        <span class="text-lg font-semibold">Raised To: </span>
+        <span class="text-gray-600">{{ invoice.raisingToCompany }}</span>
+      </div>
+      <div class="mb-4">
+        <span class="text-lg font-semibold">Created Date: </span>
+        <span class="text-gray-600">{{
+          invoice.createdAt | date : "dd/MM/yyyy"
+        }}</span>
+      </div>
+      <!-- invoice-details-button.component.html -->
+      <button
+        (click)="navigateToInvoiceDetails(invoice.invoiceNumber)"
+        class="bg-blue-500 p-2 rounded text-white hover:bg-blue-700 active:bg-blue-900">
+        View Details
+      </button>
+
+      <!-- Add more details as needed -->
+    </div>
+  </div>
+
+  <ng-template #noInvoices>
+    <div class="flex flex-col items-center justify-center h-full">
+      <p class="mb-4">No invoices found.</p>
+      <button (click)="addInvoice()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Add Invoice
+      </button>
+    </div>
+  </ng-template>
+</div>

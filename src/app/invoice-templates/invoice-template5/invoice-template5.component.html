@@ -1,0 +1,182 @@
+<div class="min-h-screen">
+  <div class="container">
+    <div class="header">
+      <h2 class="text-lg font-bold pt-0">STASMEN PRIVATE LIMITED</h2>
+      <hr />
+      <div class="text-xs">
+        CIN: U80904AP2020PTC114988 | GSTIN: 37ABDCS9711P1ZN
+      </div>
+      <div class="text-xs">
+        FLAT. NO. 402, PLOT NO. 13A, 12B, BHOJAIAH RESIDENCY, SRI RAMACHANDRA
+          NAGAR, VIJAYAWADA
+      </div>
+      <div class="text-xs">
+        KRISHNA DIST., A.P. INDIA – 520007;
+      </div>
+      <hr />
+      <div>
+        <span class="fontWeight">Export Invoice</span>
+      </div>
+      <div class="divider">
+        <div class="item fontWeight">Invoice No: {{ invoiceNumber }}</div>
+        <div class="item fontWeight">
+          Invoice Date: {{ invoiceDate | date : "mediumDate" }}
+        </div>
+      </div>
+      <div class="divider">
+        <div class="item fontWeight">Reverse Charge (Y/N):</div>
+        <div class="item fontWeight">N</div>
+        <div class="item fontWeight">State: Andhra Pradesh</div>
+        <div class="item fontWeight">Code</div>
+        <div class="item fontWeight">37</div>
+      </div>
+      <div>
+        <span class="fontWeight"
+          >“Supply Meant for Export Under Letter of Undertaking Without Payment
+          of Integrated Tax (IGST)”</span
+        >
+      </div>
+      <div class="divider">
+        <div class="item">Bill To Party</div>
+        <div class="item">Ship To Party</div>
+      </div>
+      <div class="divider">
+        <div class="item fontWeight text-left">
+          Name: CHERISH TECHNOLOGIES INC
+        </div>
+        <div class="item fontWeight text-left">
+          Name: CHERISH TECHNOLOGIES INC
+        </div>
+      </div>
+      <div class="divider">
+        <div class="item fontWeight text-left m-0">
+          <div>Address:</div>
+          <div>39180 LIBERTY ST,</div>
+          <div>SUITE 205, FREMONT, CA 94538,</div>
+          <div>FAX# 510 344 2526;</div>
+          <div style="margin-top: 4%">TAX ID: 81-3630750</div>
+        </div>
+        <div class="item fontWeight text-left">
+          <div>Address:</div>
+          <div>39180 LIBERTY ST,</div>
+          <div>SUITE 205, FREMONT, CA 94538,</div>
+          <div>FAX# 510 344 2526;</div>
+        </div>
+      </div>
+      <div class="divider">
+        <div class="item fontWeight text-left">GSTIN/UIN: N.A.</div>
+        <div class="item fontWeight text-left">GSTIN/UIN: N.A.</div>
+      </div>
+      <div class="divider">
+        <div class="item fontWeight">Country: USA</div>
+        <div class="item fontWeight">Code</div>
+        <div class="item fontWeight"></div>
+        <div class="item fontWeight">Country: USA</div>
+        <div class="item fontWeight">Code</div>
+        <div class="item fontWeight"></div>
+      </div>
+    </div>
+    <div class="invoice-details">
+      <hr />
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>S.No.</th>
+          <th>Description of Services</th>
+          <th>HSN/SA Code</th>
+          <th>Amount</th>
+          <th>Discount</th>
+          <th>Taxable value</th>
+          <th>IGST</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let service of services; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>
+            <p>{{ service.description }}</p>
+            <p>Letter of Undertaking Application reference number (ARN): AD3704230008293</p>
+          </td>
+          <td>{{ service.hsnCode }}</td>
+          <td>{{ service.amount }}</td>
+          <td class="centerAlign">-</td>
+          <td class="centerAlign">-</td>
+          <td class="centerAlign">-</td>
+          <!-- <td>-</td> -->
+          <td>{{ service.amount }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="divider">
+      <div class="item fontWeight"></div>
+      <div class="item fontWeight"></div>
+      <div class="item fontWeight"></div>
+      <div class="item fontWeight"></div>
+      <div class="item fontWeight centerAlign">Total</div>
+      <div class="item fontWeight centerAlign">-</div>
+      <div class="item fontWeight centerAlign">-</div>
+      <div class="item fontWeight centerAlign">-</div>
+      <div class="item fontWeight centerAlign">{{ getTotalAmount() }}</div>
+    </div>
+
+    <div class="divider">
+      <div class="item fontWeight">Total Invoice amount in words</div>
+      <div class="item fontWeight">Total Amount before Tax</div>
+      <div class="item fontWeight">{{ getTotalAmount() }}</div>
+    </div>
+
+    <div class="divider">
+      <div class="item centerAlign text-center">
+        <strong>Rupees {{ convertToWords(getTotalAmount()) }} Only</strong>
+      </div>
+      <div class="divider">
+        <div>
+          <div class="item1 fontWeight centerAlign">Add: IGST</div>
+          <div class="item1 fontWeight centerAlign">-</div>
+        </div>
+        <div>
+          <div class="item1 fontWeight">Total Amount in INR after Tax</div>
+          <div class="item1 fontWeight centerAlign">{{ getTotalAmount() }}</div>
+        </div>
+        <div>
+          <div class="item1 fontWeight">Total Amount in USD after Tax</div>
+          <div class="item1 fontWeight centerAlign">$ {{ amountInUsd() }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider">
+      <div class="item fontWeight centerAlign">PAN, GSTIN & Bank Details</div>
+      <div class="item fontWeight centerAlign">GST on Reverse Charge</div>
+      <div class="item fontWeight centerAlign">0.00</div>
+    </div>
+
+    <div class="divider">
+      <div class="item">
+        <div class="fontWeight">PAN: ABDCS9711P</div>
+        <div class="fontWeight">GSTIN: 37ABDCS9711P1ZN</div>
+        <div class="fontWeight">Bank details for payment is as:</div>
+        <div >Direct Deposit:</div>
+        <div>Account Name: <b>STASMEN PRIVATE LIMITED</b></div>
+        <div>Account Number: <b>59299666173999</b></div>
+        <div>IFSC: <b>HDFC0000109</b></div>
+        <div>Swift Code: <b>HDFCINBB</b></div>
+        <div>Bank: <b>HDFC BANK LIMITED</b></div>
+      </div>
+      <div class="item">
+        <div>
+          Certified that the particulars given above are true and correct
+        </div>
+        <div class="fontWeight" style="margin: 5%; text-align: center">
+          <img src="../../../assets/image008.jpg" />
+        </div>
+        <div class="fontWeight" style="margin-top: 5%; text-align: center">
+          Authorized signatory
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

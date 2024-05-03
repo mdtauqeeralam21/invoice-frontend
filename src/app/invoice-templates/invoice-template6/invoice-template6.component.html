@@ -1,0 +1,184 @@
+<div class="min-h-screen">
+<div class="invoice">
+  <p class="font-bold text-center text-lg">Invoice</p>
+  <div class="tax-details">
+    <table>
+      <tr>
+        <td rowspan="4">
+          <div>
+            <img class="px-4" src="../../../assets/image007.jpg" />
+          </div>
+          <div>
+            <p class="text-lg font-bold px-2 text-left">
+              REFINEDGE PRIVATE LIMITED
+            </p>
+            <p class="px-2 text-left">
+              D No 54-13/5-6, 4th Floor, MK Aura, Road No 2, Mahanadu Road,
+              Srinivasa Nagar, Bank Colony, Vijayawada, Krishna District, Andhra
+              Pradesh - 520 008, India.
+            </p>
+            <p class="px-2 text-left">
+              GSTIN/UIN: <b>37AAKCR3744D1ZB</b> <br />
+              CIN: <b>U80902AP2020PTC115454</b>
+            </p>
+          </div>
+        </td>
+        <td>
+          <h4>
+            Invoice No. &nbsp;&nbsp; e-Way Bill No: <b> {{ invoiceNumber }}</b>
+          </h4>
+        </td>
+        <td class="text-left">
+          Dated:
+          <b>{{ invoiceDate | date : "mediumDate" }}</b>
+        </td>
+      </tr>
+      <tr>
+        <td>Delivery Note:</td>
+        <td>Mode/Terms of Payment <b> 7 Days</b></td>
+      </tr>
+      <tr>
+        <td>Supplier's Ref. - MSA</td>
+        <td>Other Reference(s):</td>
+      </tr>
+      <tr>
+        <td>Buyer's Order No. MSA</td>
+        <td class="text-left">
+          Dated:<b> {{ invoiceDate | date : "mediumDate" }}</b>
+        </td>
+      </tr>
+      <tr>
+        <td rowspan="4">
+          <div class="text-left">
+            <b> Buyer: </b>
+          </div>
+          <p class="text-left font-bold">CHERISH TECHNOLOGIES INC</p>
+          <p class="text-left">
+            39180 Liberty St, Suite 205, Fremont, CA 94538 U.S.A
+          </p>
+          <p class="text-left">TAX ID: 81-3630750</p>
+        </td>
+        <td>Despatch Document No. &nbsp;&nbsp;</td>
+        <td>Delivery Note Date:</td>
+      </tr>
+      <tr>
+        <td>Despatched through: <b>Online</b></td>
+        <td>Destination:</td>
+      </tr>
+      <tr>
+        <td>Bill of Lading/LR-RR No.</td>
+        <td>Motor Vehicle No.</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          Terms of Delivery Billing of Monthly Contract Payment vide Master
+          Service Agreement dated 24th August 2020
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="services">
+    <table>
+      <thead>
+        <tr>
+          <th>SI No.</th>
+          <th>Description of Goods</th>
+          <th>HSN/SAC</th>
+          <th>Currency &Exchnage Rate Details</th>
+          <th>Amount (in Rs.)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let service of services; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ service.description }}</td>
+          <td>{{ service.hsnCode }}</td>
+          <td>
+            ${{ service.currencyExchange }} &#64; Exchange Rate of
+            {{ service.rate }} /USD
+          </td>
+          <td>
+            {{ service.currencyExchange * service.rate | number : "1.2-2" }}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4" style="text-align: right">Total</td>
+          <td>{{ getTotalAmount() | number : "1.2-2" }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="amount-in-words">
+    <p>
+      Amount in Words:<strong>
+        {{ convertToWords(getTotalAmount()) }} only</strong
+      >
+    </p>
+  </div>
+
+  <!-- Tax Details Section -->
+  <div class="tax-details">
+    <table>
+      <thead>
+        <tr style="border-bottom: 1px solid white">
+          <th rowspan="2">HSN/SAC</th>
+          <th rowspan="2">Taxable Value</th>
+          <th colspan="2">Integrated Tax</th>
+          <th rowspan="2">Total Tax Amount</th>
+        </tr>
+        <tr>
+          <th>Rate</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let service of services; let i = index">
+          <td>{{ service.hsnCode }}</td>
+          <td>{{ taxableValue }}</td>
+          <td>{{ taxRate }}</td>
+          <td>{{ taxAmount }}</td>
+          <td>{{ totalTaxAmount }}</td>
+        </tr>
+        <tr>
+          <td colspan="4">Total</td>
+          <td>-</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="bank">
+    <div class="bank-details">
+      Tax Amount (in words) :<b> INR ZERO</b>
+
+      <p>Bank Details:</p>
+      <p>Account Number: <strong>921020049940071</strong></p>
+      <p>Bank:<strong>AXIS BANK</strong></p>
+      <p>IFSC :<strong>UTIB0003988 </strong></p>
+
+      <p>Swift Code: <strong>AXISINBB069</strong></p>
+      <p>Company's PAN <strong>: AAKCR37 44D </strong></p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="declaration ml-2">
+      <p class="font-bold">Declaration</p>
+      <p>
+        We declare that this invoice shows the actual price of the <br />goods
+        described and that all particulars are true and correct.
+      </p>
+    </div>
+    <div class="signature">
+      <img src="../../../assets/image002.gif" />
+      <p style="text-align: center"><strong>Authorised Signatory</strong></p>
+    </div>
+  </div>
+  <hr />
+  <div class="footer text-sm">
+    <p>SUBJECT TO ELURU JURISDICTION</p>
+    <p>This is a Computer Generated Invoice</p>
+  </div>
+</div>
+</div>
