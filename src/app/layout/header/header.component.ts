@@ -32,13 +32,13 @@ export class HeaderComponent {
   }
  }
 
-//  checkUser(){
-//   const userDetails=this.stService.getUser();
-//   this.username=userDetails.name;
-//  }
  checkUser(){
-  this.authService.getUserProfile().subscribe((res)=>{
-    this.username=res.name;
-  })
+  const userDetails=this.stService.getUser();
+  this.username=userDetails.name;
  }
+//  checkUser(){
+//   this.authService.getUserProfile().subscribe((res)=>{
+//     this.username=res.name;
+//   })
+//  }
 }
