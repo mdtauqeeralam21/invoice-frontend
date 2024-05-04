@@ -124,7 +124,7 @@ export class ParentComponentComponent {
         this.toastr.success("Invoice created", "Success");
         this.router.navigate(['invoices/' + invoiceNum]);
     }, (error) => {
-        console.error('Error creating invoice:', error);
+        console.error('Error creating invoice:', error.error.msg);
         this.toastr.error("Failed to create invoice", "Error");
     });
 }
