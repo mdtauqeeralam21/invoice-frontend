@@ -37,7 +37,7 @@ export class LoginComponent {
         console.log('Logged in successfully!', res);
         this.toastr.success('User Logged in successfully!', 'Success');
         this.stService.saveUser(res);
-        this.router.navigate(['']).then(() => {window.location.reload();
+        this.router.navigate(['']);
           });
       },
       (error) => {
