@@ -12,7 +12,8 @@ import { adminGuard } from './admin.guard';
 
 
 const routes: Routes = [
-  { path: '', component: ListInvoicesComponent,canActivate:[AuthGuard] },
+  { path: '', redirectTo: '/invoices', pathMatch: 'full' },
+  { path: 'invoices', component: ListInvoicesComponent,canActivate:[AuthGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   {path:'forgotpassword', component:ForgotPasswordComponent},
