@@ -10,7 +10,6 @@ export class InvoiceService {
   private apiUrl = 'https://invoice-backend-2yup.onrender.com/api/v1';
 
 
-
   constructor(private http: HttpClient) { }
 
   createInvoice(invoiceData: any): Observable<any> {

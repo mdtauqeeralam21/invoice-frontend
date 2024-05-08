@@ -46,7 +46,7 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
-    return this.http.get(AUTH_API + 'logout', {}
+    return this.http.get(AUTH_API + 'logout'
     );
   }
 
