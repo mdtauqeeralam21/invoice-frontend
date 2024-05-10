@@ -35,7 +35,7 @@ export class RegisterComponent {
         this.isSuccessful = true;
         this.isSignUpFailed = false;
         this.toastr.success('User registered successfully!', 'Success');
-        this.router.navigate(['']).then(() => {
+        this.router.navigate(['invoices']).then(() => {
           window.location.reload();
        });
       },

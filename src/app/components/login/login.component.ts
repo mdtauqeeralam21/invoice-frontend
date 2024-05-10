@@ -37,7 +37,9 @@ export class LoginComponent {
         console.log('Logged in successfully!', res);
         this.toastr.success('User Logged in successfully!', 'Success');
         this.stService.saveUser(res);
-        this.router.navigate(['']);
+        this.router.navigate(['invoices']).then(() => {
+          window.location.reload();
+       });
       },
       (error) => {
         console.error('Login error:', error);

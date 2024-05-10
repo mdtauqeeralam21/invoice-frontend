@@ -26,6 +26,7 @@ import { InvoiceTemplate6Component } from './invoice-templates/invoice-template6
 import { NoInvoiceComponent } from './invoice-templates/no-invoice/no-invoice.component';
 import { InvoiceDescriptionComponent } from './invoice-templates/invoice-description/invoice-description.component';
 import { UpdateInvoiceComponent } from './invoice-templates/update-invoice/update-invoice.component';
+import { LandingPageComponent } from './layout/landing-page/landing-page.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { UpdateInvoiceComponent } from './invoice-templates/update-invoice/updat
     NoInvoiceComponent,
     InvoiceDescriptionComponent,
     UpdateInvoiceComponent,
+    LandingPageComponent,
 
     
 

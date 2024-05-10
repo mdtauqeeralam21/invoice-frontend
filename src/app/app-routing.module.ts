@@ -9,10 +9,11 @@ import { ParentComponentComponent } from './invoice-templates/parent-component/p
 import { InvoiceDescriptionComponent } from './invoice-templates/invoice-description/invoice-description.component';
 import { UpdateInvoiceComponent } from './invoice-templates/update-invoice/update-invoice.component';
 import { adminGuard } from './admin.guard';
+import { LandingPageComponent } from './layout/landing-page/landing-page.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/invoices', pathMatch: 'full' },
+  { path: '', component:LandingPageComponent },
   { path: 'invoices', component: ListInvoicesComponent,canActivate:[AuthGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
