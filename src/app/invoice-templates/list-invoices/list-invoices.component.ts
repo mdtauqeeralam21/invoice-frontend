@@ -22,6 +22,7 @@ export class ListInvoicesComponent implements OnInit {
     
   }
 
+
   checkUser(){
     this.authService.getUserProfile().subscribe((res)=>{
       console.log(res.isAdmin);
