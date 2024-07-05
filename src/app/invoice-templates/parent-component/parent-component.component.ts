@@ -107,9 +107,6 @@ export class ParentComponentComponent {
     this.currentStep=2;
   }
 
-
-
-
   createInvoice(): void {
     const invoiceData = {
         invoiceNumber: this.invoiceNumber,
