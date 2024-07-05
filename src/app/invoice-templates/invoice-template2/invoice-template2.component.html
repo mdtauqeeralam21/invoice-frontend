@@ -1,171 +1,177 @@
-  <div class="min-h-screen">
-    <div class="invoice-name"><strong>Invoice</strong></div>
+<div class="min-h-screen">
+  <div class="invoice-name"><strong>Invoice</strong></div>
 
-    <div class="invoice">
-      <div class="header">
-        <div class="logo">
-          <img src="../../../assets/image003.jpg" alt="Company Logo" />
-        </div>
-        <div class="company-info">
-          <p style="font-weight: bolder">SIRIAN OVERSEAS EDUCARE PRIVATE LIMITED</p>
-          <p>D No 54-13/5-6, 3rd Floor, MK Aura, Road no 2, Mahanadu Rd,</p>
-          <p>Srinivasa Nagar Bank Colony, Vijayawada, Krishna District</p>
-          <p>Andhra Pradesh-520008 , India.</p>
-          <p>
-            GSTIN/UIN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<strong
-              >37ABECS9313G1Z7</strong
-            >
-          </p>
-          <p>
-            Corporate Identification Number:<strong
-              >U80903AP2020PTC116507</strong
-            >
-          </p>
-          <p>
-            Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :<strong
-              >sirianoverseasaccounts&#64;sirianoverseas.com</strong
-            >
-          </p>
-        </div>
+  <div class="invoice">
+    <div class="header">
+      <div class="logo">
+        <img src="../../../assets/image003.jpg" alt="Company Logo" />
       </div>
-      <div class="horizontal-line"></div>
-
-      <div class="details">
-        <div class="column">
-          <p><strong>Invoice Number: </strong>{{ invoiceNumber }}</p>
-          <p><strong>Dated:</strong> {{ invoiceDate | date : "mediumDate" }}</p>
-          <p><strong>Billed To: </strong></p>
-          <p class="my-0 font-bold">CHERISH TECHNOLOGIES INC</p>
-          <p class="w-3/4 my-0">
-            39180 Liberty St, Suite 205, Fremont, CA 94538 U.S.A
-          </p>
-          <p>TAX ID : {{ taxId }}</p>
-        </div>
-        <div class="column">
-          <p><strong>Nature of Supply:</strong> {{ natureOfSupply }}</p>
-          <p><strong>Mode of Supply: </strong>{{ modeOfSupply }}</p>
-          <p><strong>Nature of Invoice: </strong>{{ natureOfInvoice }}</p>
-          <p><strong>IGST Levy:</strong> {{ igstLevy }}</p>
-          <p>
-            <strong>Application Reference No:</strong>
-            {{ undertakingRefNo }}
-          </p>
-        </div>
-      </div>
-
-      <!-- Services Table Section -->
-      <div class="services">
-        <table>
-          <thead>
-            <tr>
-              <th>SI No.</th>
-              <th>Description of Goods</th>
-              <th>HSN/SAC</th>
-              <th>Currency & Exchange Rate Details</th>
-              <th>Amount (in Rs.)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let service of services; let i = index">
-              <td>{{ i + 1 }}</td>
-              <td>{{ service.description }}</td>
-              <td>{{ service.hsnCode }}</td>
-              <td>${{ service.currencyExchange }}  &#64;exchange rate of {{service.rate}} /USD</td>
-              <td>{{ (service.currencyExchange * service.rate) | number:'1.2-2' }}</td>
-            </tr>
-            <tr>
-              <td colspan="4" style="text-align: right">Total</td>
-              <td>{{ getTotalAmount() | number:'1.2-2' }}</td>
-
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="amount-in-words">
-        <p>
-          Amount in Words:<strong> {{ convertToWords(getTotalAmount()) }} Only</strong>
+      <div class="company-info">
+        <p style="font-weight: bolder">
+          SIRIAN OVERSEAS EDUCARE PRIVATE LIMITED
         </p>
-      </div>
-      <div class="tax-details">
-        <table>
-          <thead>
-            <tr style="border-bottom: 1px solid white">
-              <th rowspan="2">HSN/SAC</th>
-              <th rowspan="2">Taxable Value</th>
-              <th colspan="2">Integrated Tax</th>
-              <th rowspan="2">Total Tax Amount</th>
-            </tr>
-            <tr>
-              <th>Rate</th>
-              <th>Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let service of services; let i = index">
-              <td>{{ service.hsnCode }}</td>
-              <td>{{ taxableValue }}</td>
-              <td>{{ taxRate }}</td>
-              <td>{{ taxAmount }}</td>
-              <td>{{ totalTaxAmount }}</td>
-            </tr>
-            <tr>
-              <td colspan="4">Total</td>
-              <td>-</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="tax-amount-in-words">
+        <p>D No 54-13/5-6, 3rd Floor, MK Aura, Road no 2, Mahanadu Rd,</p>
+        <p>Srinivasa Nagar Bank Colony, Vijayawada, Krishna District</p>
+        <p>Andhra Pradesh-520008 , India.</p>
         <p>
-          Tax Amount (in Words) &nbsp;:<strong> {{ taxAmountInWords }}</strong>
+          GSTIN/UIN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<strong
+            >37ABECS9313G1Z7</strong
+          >
         </p>
         <p>
-          Company's PAN No &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :<strong>{{
-            companyPanNo
-          }}</strong>
+          Corporate Identification Number:<strong>U80903AP2020PTC116507</strong>
         </p>
-      </div>
-
-      <div class="declaration">
-        <p><strong>Declaration:</strong></p>
         <p>
-          We declare that this invoice shows the actual price of the goods
-          described and that all particulars are true and correct.
+          Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :<strong
+            >accounts&#64;sirianoverseas.com</strong
+          >
         </p>
       </div>
+    </div>
+    <div class="horizontal-line"></div>
 
-      <hr />
-      <div class="bank-signature">
-        <div class="bank-details">
-          <h4 class="m-2">OUR BANK DETAILS:</h4>
-          <p><strong>Sirian Overseas Educare Private Limited</strong></p>
-          <p>
-            Account No &nbsp;:<strong>{{ accountNo }}</strong>
-          </p>
-          <p>
-            Bank Name :<strong>{{ bankName }}</strong>
-          </p>
-          <p>
-            Branch &nbsp;&nbsp; :<strong>{{ branch }}</strong>
-          </p>
-          <p>
-            IFSC Code &nbsp;&nbsp;:<strong>{{ ifscCode }}</strong>
-          </p>
-          <p>
-            SWIFT code :<strong>{{ swiftCode }}</strong>
-          </p>
-        </div>
-        <div class="signature">
-          <p style="margin: 16px">
-            <strong> for Sirian Overseas Educare Private Limited</strong>
-          </p>
-          <img src="../../../assets/image004.gif" />
-          <p style="text-align: center">
-            <strong>Authorised Signatory</strong>
-          </p>
-        </div>
+    <div class="details">
+      <div class="column">
+        <p><strong>Invoice Number: </strong>{{ invoiceNumber }}</p>
+        <p><strong>Dated:</strong> {{ invoiceDate | date : "mediumDate" }}</p>
+        <p><strong>Billed To: </strong></p>
+        <p class="my-0 font-bold">CHERISH TECHNOLOGIES INC</p>
+        <p class="w-3/4 my-0">
+          39180 Liberty St, Suite 205, Fremont, CA 94538 U.S.A
+        </p>
+        <p>TAX ID : {{ taxId }}</p>
+      </div>
+      <div class="column">
+        <p><strong>Nature of Supply:</strong> {{ natureOfSupply }}</p>
+        <p><strong>Mode of Supply: </strong>{{ modeOfSupply }}</p>
+        <p><strong>Nature of Invoice: </strong>{{ natureOfInvoice }}</p>
+        <p><strong>IGST Levy:</strong> {{ igstLevy }}</p>
+        <p>
+          <strong>Application Reference No:</strong>
+          {{ undertakingRefNo }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Services Table Section -->
+    <div class="services">
+      <table>
+        <thead>
+          <tr>
+            <th>SI No.</th>
+            <th>Description of Goods</th>
+            <th>HSN/SAC</th>
+            <th>Currency & Exchange Rate Details</th>
+            <th>Amount (in Rs.)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let service of services; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ service.description }}</td>
+            <td>{{ service.hsnCode }}</td>
+            <td>
+              ${{ service.currencyExchange }} &#64;exchange rate of
+              {{ service.rate }} /USD
+            </td>
+            <td>
+              {{ service.currencyExchange * service.rate | number : "1.2-2" }}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4" style="text-align: right">Total</td>
+            <td>{{ getTotalAmount() | number : "1.2-2" }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="amount-in-words">
+      <p>
+        Amount in Words:<strong>
+          {{ convertToWords(getTotalAmount()) }} Only</strong
+        >
+      </p>
+    </div>
+    <div class="tax-details">
+      <table>
+        <thead>
+          <tr style="border-bottom: 1px solid white">
+            <th rowspan="2">HSN/SAC</th>
+            <th rowspan="2">Taxable Value</th>
+            <th colspan="2">Integrated Tax</th>
+            <th rowspan="2">Total Tax Amount</th>
+          </tr>
+          <tr>
+            <th>Rate</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let service of services; let i = index">
+            <td>{{ service.hsnCode }}</td>
+            <td>{{ taxableValue }}</td>
+            <td>{{ taxRate }}</td>
+            <td>{{ taxAmount }}</td>
+            <td>{{ totalTaxAmount }}</td>
+          </tr>
+          <tr>
+            <td colspan="4">Total</td>
+            <td>-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tax-amount-in-words">
+      <p>
+        Tax Amount (in Words) &nbsp;:<strong> {{ taxAmountInWords }}</strong>
+      </p>
+      <p>
+        Company's PAN No &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :<strong>{{
+          companyPanNo
+        }}</strong>
+      </p>
+    </div>
+
+    <div class="declaration">
+      <p><strong>Declaration:</strong></p>
+      <p>
+        We declare that this invoice shows the actual price of the goods
+        described and that all particulars are true and correct.
+      </p>
+    </div>
+
+    <hr />
+    <div class="bank-signature">
+      <div class="bank-details">
+        <h4 class="m-2">OUR BANK DETAILS:</h4>
+        <p><strong>Sirian Overseas Educare Private Limited</strong></p>
+        <p>
+          Account No &nbsp;:<strong>{{ accountNo }}</strong>
+        </p>
+        <p>
+          Bank Name :<strong>{{ bankName }}</strong>
+        </p>
+        <p>
+          Branch &nbsp;&nbsp; :<strong>{{ branch }}</strong>
+        </p>
+        <p>
+          IFSC Code &nbsp;&nbsp;:<strong>{{ ifscCode }}</strong>
+        </p>
+        <p>
+          SWIFT code :<strong>{{ swiftCode }}</strong>
+        </p>
+      </div>
+      <div class="signature">
+        <p style="margin: 16px">
+          <strong> for Sirian Overseas Educare Private Limited</strong>
+        </p>
+        <img src="../../../assets/image004.gif" />
+        <p style="text-align: center">
+          <strong>Authorised Signatory</strong>
+        </p>
       </div>
     </div>
   </div>
+</div>
