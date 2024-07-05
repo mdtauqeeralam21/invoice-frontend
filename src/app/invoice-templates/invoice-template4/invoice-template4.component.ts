@@ -1,5 +1,5 @@
 import { Component,Input } from '@angular/core';
-import * as numberToWords from 'number-to-words';
+import { ToWords } from 'to-words';
 
 @Component({
   selector: 'app-invoice-template4',
@@ -31,6 +31,13 @@ export class InvoiceTemplate4Component {
   ifscCode: string = 'HDFC0003995';
   swiftCode: string = 'HDFCINBBHYD';
 
+  private toWords: ToWords;
+
+  constructor() {
+    this.toWords = new ToWords();
+  }
+
+
   getTotalAmount(): number {
     let totalAmount = 0;
     for (let service of this.services) {
@@ -40,11 +47,7 @@ export class InvoiceTemplate4Component {
   }
 
   convertToWords(amount: number): string {
-    const words = numberToWords.toWords(amount);
-
-    const result ='INR '+ words.charAt(0).toUpperCase() + words.slice(1);
-
-    return result;
-  }
-  
+    const words = this.toWords.convert(amount);
+    return 'INR ' + words.charAt(0).toUpperCase() + words.slice(1);
+  } 
 }

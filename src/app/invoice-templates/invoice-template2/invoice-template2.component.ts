@@ -1,17 +1,15 @@
-import { Component,Input } from '@angular/core';
-import * as numberToWords from 'number-to-words';
+import { Component, Input } from '@angular/core';
+import { ToWords } from 'to-words';
 
 @Component({
   selector: 'app-invoice-template2',
   templateUrl: './invoice-template2.component.html',
-  styleUrl: './invoice-template2.component.css'
+  styleUrls: ['./invoice-template2.component.css']
 })
 export class InvoiceTemplate2Component {
   @Input() services: any[] = [];
-  @Input() invoiceNumber:string='';
-  @Input() invoiceDate : Date | null =null;
-
-  
+  @Input() invoiceNumber: string = '';
+  @Input() invoiceDate: Date | null = null;
 
   taxId: string = '81-3630750';
   natureOfSupply: string = 'Goods';
@@ -21,7 +19,7 @@ export class InvoiceTemplate2Component {
   undertakingRefNo: string = 'AD370422005178B';
   taxableValue: string = '';
   taxRate: string = '0%';
-  amountdemo:number=210098;
+  amountdemo: number = 210098;
   taxAmount: string = '0';
   totalTaxAmount: string = '-';
   taxAmountInWords: string = 'Nil';
@@ -32,6 +30,12 @@ export class InvoiceTemplate2Component {
   ifscCode: string = 'UTIB0000069';
   swiftCode: string = 'AXISINBB069';
 
+  private toWords: ToWords;
+
+  constructor() {
+    this.toWords = new ToWords();
+  }
+
   getTotalAmount(): number {
     let totalAmount = 0;
     for (let service of this.services) {
@@ -39,13 +43,9 @@ export class InvoiceTemplate2Component {
     }
     return totalAmount;
   }
-  
+
   convertToWords(amount: number): string {
-    const words = numberToWords.toWords(amount);
-
-    const result ='INR '+ words.charAt(0).toUpperCase() + words.slice(1);
-
-    return result;
+    const words = this.toWords.convert(amount);
+    return 'INR ' + words.charAt(0).toUpperCase() + words.slice(1);
   }
-  
 }
