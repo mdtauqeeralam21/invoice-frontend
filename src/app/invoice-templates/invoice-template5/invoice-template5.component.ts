@@ -1,5 +1,5 @@
 import { Component,Input, OnInit } from '@angular/core';
-import * as numberToWords from 'number-to-words';
+import { ToWords } from 'to-words';
 
 @Component({
   selector: 'app-invoice-template5',
@@ -24,12 +24,17 @@ export class InvoiceTemplate5Component implements OnInit {
     return total;
   }
 
+
+  private toWords: ToWords;
+
+  constructor() {
+    this.toWords = new ToWords();
+  }
+
+
   convertToWords(amount: number): string {
-    const words = numberToWords.toWords(amount);
-
-    const result =words.charAt(0).toUpperCase() + words.slice(1);
-
-    return result;
+    const words = this.toWords.convert(amount);
+    return 'INR ' + words.charAt(0).toUpperCase() + words.slice(1);
   }
 
   amountInUsd(): number {
