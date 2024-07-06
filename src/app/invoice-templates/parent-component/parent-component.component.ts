@@ -125,7 +125,4 @@ export class ParentComponentComponent {
         this.toastr.error("Failed to create invoice", "Error");
     });
 }
-
-
-
 }
