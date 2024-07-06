@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 
 
-const AUTH_API= 'https://invoice-backend-2yup.onrender.com/api/v1/auth/';
+const AUTH_API= 'http://localhost:4000/api/v1/auth/';
 const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
 @Injectable({

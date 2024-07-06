@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PasswordService {
-  private apiUrl = 'https://invoice-backend-2yup.onrender.com/api/v1';
+  private apiUrl = 'http://localhost:4000/api/v1';
   constructor(private http:HttpClient) { }
   sendResetPasswordEmail(email: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/forgotpassword`, { email });
